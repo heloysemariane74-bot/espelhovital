@@ -1,6 +1,5 @@
 // Cole aqui a URL HTTPS do seu backend no Render, sem /api no final.
-const renderUrl = "https://espelhovital-back-r859.onrender.com";
-
+const renderUrl = "https://espelhovital-back-1-l6dn.onrender.com";
 const apiGroups = [
     "api", "usuarios", "ciclo", "consultas", "sono", "humor", "dashboard",
     "diario", "lembretes", "relatorios", "conta", "analise-ia", "recomendacoes", "grok"
