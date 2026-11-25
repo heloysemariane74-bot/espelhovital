@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assistente Vital</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="../css/assistant.css">
+<link rel="stylesheet" href="../css/theme.css">
+<script src="../js/icons.js"></script>
+<link rel="stylesheet" href="../css/features.css"></head>
+
+<body class="ev-app">
+
+<div class="container">
+
+    <div class="chat-card">
+
+        <div class="chat-header">
+            <div class="chat-avatar">💜</div>
+            <div>
+                <h2>Assistente Vital</h2>
+                <p>sua amiga por aqui, sempre que precisar</p>
+            </div>
+        </div>
+
+        <div id="chat" class="chat-body"></div>
+
+        <div class="chat-input-row">
+            <input id="userInput" placeholder="Conta pra mim como você tá hoje...">
+            <button onclick="enviarMensagem()">Enviar</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../js/assistant.js"></script>
+<script src="../js/sidebar.js"></script>
+
+<script src="../js/reminders.js"></script></body>
+</html>

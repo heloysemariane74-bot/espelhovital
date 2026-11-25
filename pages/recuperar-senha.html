@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+    <meta charset="UTF-8">
+    <title>Recuperar Senha</title>
+
+    <link rel="stylesheet" href="../css/login.css">
+<link rel="stylesheet" href="../css/theme.css">
+<script src="../js/icons.js"></script>
+</head>
+
+<body class="ev-auth">
+
+    <div class="container">
+        <div class="login-card">
+
+            <div class="logo">
+                <img src="../assets/logo.png" alt="Espelho Vital" class="logo-img">
+                <h1>Espelho Vital</h1>
+                <p>Recuperar senha</p>
+            </div>
+
+            <form id="recuperarForm">
+
+                <div class="input-group">
+                    <label for="email">E-mail cadastrado</label>
+                    <input type="email" id="email" placeholder="Digite seu e-mail" required>
+                </div>
+
+                <button type="submit" class="btn-login">Enviar instruções</button>
+
+            </form>
+
+            <p id="mensagem"></p>
+
+            <p class="esqueci-link">
+                <a href="login.html">Voltar para o login</a>
+            </p>
+
+        </div>
+    </div>
+
+    <script src="../js/recuperar-senha.js"></script>
+
+</body>
+</html>

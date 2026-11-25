@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="../css/theme.css">
+<script src="../js/icons.js"></script>
+<link rel="stylesheet" href="../css/features.css"></head>
+
+<body class="ev-app">
+
+<div class="container">
+
+    <a href="../perfil-pronto.html" class="voltar">⬅ Voltar ao Dashboard</a>
+
+    <div class="form-card">
+
+        <h2>📊 Análise Inteligente</h2>
+        <p style="opacity:.7; font-size:.88rem; margin-bottom:16px;">
+            Cruza seus registros de sono, humor e ciclo para encontrar padrões.
+            É baseada em estatística e regras sobre os seus próprios dados —
+            não substitui avaliação médica.
+        </p>
+
+        <div class="dashboard">
+            <div class="card"><h2 id="mediaSono">--</h2><p>Média de Sono</p></div>
+            <div class="card"><h2 id="statusSono">--</h2><p>Status Geral</p></div>
+            <div class="card"><h2 id="totalRegistros">--</h2><p>Registros de Sono</p></div>
+            <div class="card"><h2 id="percentualRuim">--</h2><p>Noites "Ruim"</p></div>
+            <div class="card"><h2 id="totalHumor">--</h2><p>Registros de Humor</p></div>
+        </div>
+
+        <div class="form-card ai-box">
+            <h3>🧠 Insights</h3>
+            <div id="listaInsights"><p>Carregando análise...</p></div>
+        </div>
+
+        <div class="dashboard" style="margin-top:20px;">
+            <div class="form-card">
+                <h3 style="margin-bottom:14px;">😴 Qualidade do Sono</h3>
+                <canvas id="graficoSono"></canvas>
+            </div>
+            <div class="form-card">
+                <h3 style="margin-bottom:14px;">😊 Distribuição de Humor</h3>
+                <canvas id="graficoHumor"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../js/analise.js"></script>
+<script src="../js/sidebar.js"></script>
+
+<script src="../js/reminders.js"></script></body>
+</html>

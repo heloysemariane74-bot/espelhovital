@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendações</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="../css/theme.css">
+<script src="../js/icons.js"></script>
+<link rel="stylesheet" href="../css/features.css"></head>
+<body class="ev-app">
+
+<div class="container">
+
+    <a href="../perfil-pronto.html" class="voltar">⬅ Voltar ao Dashboard</a>
+
+    <div class="form-card">
+
+        <h2>💡 Recomendações</h2>
+        <p style="opacity:.7; font-size:.88rem; margin-bottom:16px;">
+            Cruzamos seus registros de ciclo, sono e humor para sugerir cuidados
+            feitos sob medida para você. Não substitui avaliação médica.
+        </p>
+
+        <div id="recSono"></div>
+        <div id="recomendacoesConteudo">
+            <p>⏳ Carregando recomendações...</p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+const API = (EV.base + "");
+
+function escapar(texto) {
+    const d = document.createElement("div");
+    d.textContent = texto ?? "";
+    return d.innerHTML;
+}
+
+function card(html) {
+    return `<div class="card" style="margin-bottom:16px; white-space:pre-line;">${html}</div>`;
+}
+
+// Recomendação baseada no último registro de sono
+function recomendacaoUltimoSono(registros) {
+    if (!registros.length) return "";
+
+    const horas = registros[registros.length - 1].horas;
+
+    if (horas < 6) {
+        return card(`<h3>⚠️ Última noite</h3>
+            <p>Você dormiu pouco (${horas}h). Tente dormir entre 7 e 9 horas por noite.</p>`);
+    }
+    if (horas <= 9) {
+        return card(`<h3>✅ Última noite</h3>
+            <p>Seu tempo de sono (${horas}h) está adequado. Continue mantendo sua rotina.</p>`);
+    }
+    return card(`<h3>ℹ️ Última noite</h3>
+        <p>Você dormiu acima da média (${horas}h). Observe se há cansaço excessivo durante o dia.</p>`);
+}
+
+async function carregarRecomendacoes() {
+
+    const area = document.getElementById("recomendacoesConteudo");
+
+    const [personalizadas, sono] = await Promise.allSettled([
+        EV.fetch(`${API}/recomendacoes/personalizadas`).then(r => r.json()),
+        EV.fetch(`${API}/sono`).then(r => r.json())
+    ]);
+
+    if (sono.status === "fulfilled" && Array.isArray(sono.value)) {
+        document.getElementById("recSono").innerHTML = recomendacaoUltimoSono(sono.value);
+    }
+
+    if (personalizadas.status !== "fulfilled") {
+        area.innerHTML = card("<p>❌ Erro ao conectar com o servidor. Ele está rodando?</p>");
+        return;
+    }
+
+    const lista = personalizadas.value.recomendacoes || [];
+
+    area.innerHTML = lista.length
+        ? lista.map(t => card(`<p>${escapar(t)}</p>`)).join("")
+        : card("<p>Sem recomendações no momento.</p>");
+}
+
+carregarRecomendacoes();
+</script>
+<script src="../js/sidebar.js"></script>
+
+<script src="../js/reminders.js"></script></body>
+</html>

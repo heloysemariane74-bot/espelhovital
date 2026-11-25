@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/history.js"></script>
+<meta charset="UTF-8">
+<title>Registro de Sono</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="../css/theme.css">
+<script src="../js/icons.js"></script>
+<link rel="stylesheet" href="../css/features.css"></head>
+
+<body class="ev-app">
+
+<div class="container">
+
+    <a class="voltar" href="../perfil-pronto.html">⬅ Voltar</a>
+
+    <div class="form-card">
+
+        <h2>😴 Registro de Sono</h2>
+
+        <input 
+            type="number" 
+            id="horas" 
+            placeholder="Horas dormidas (ex: 7.5)"
+            min="0"
+            max="24"
+            step="0.1"
+        >
+
+        <select id="qualidade">
+            <option value="">Avaliar pela duração informada</option>
+            <option value="Excelente">🌟 Excelente</option>
+            <option value="Boa">😊 Boa</option>
+            <option value="Regular">😐 Regular</option>
+            <option value="Ruim">😴 Ruim</option>
+        </select>
+
+        <button onclick="salvarSono()">Salvar registro</button>
+
+        <p id="feedback" style="margin-top:10px; font-size:14px;"></p>
+
+    </div>
+
+    <div class="form-card" style="margin-top:20px;">
+
+        <h2>📖 Histórico de Sono</h2>
+
+        <div id="historicoSonoConteudo">
+            <p>⏳ Carregando registros...</p>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../js/script.js"></script>
+<script src="../js/sidebar.js"></script>
+
+<script>
+
+async function carregarHistoricoSono(){await EVHistory.render('historicoSonoConteudo','sono','sono',true);}
+carregarHistoricoSono();
+
+</script>
+
+<script src="../js/reminders.js"></script></body>
+</html>

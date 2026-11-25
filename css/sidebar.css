@@ -1,0 +1,240 @@
+#ev-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 248px;
+  height: 100dvh;
+  background: #fff;
+  border-right: 1px solid #ece6f3;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  font-family: Inter, "Segoe UI", sans-serif;
+  transition: transform 0.25s ease;
+  color: #594c6a;
+}
+#ev-sidebar * {
+  box-sizing: border-box;
+}
+#ev-sidebar .ev-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 32px 23px 36px;
+  text-decoration: none;
+  color: #4c1d95;
+}
+#ev-sidebar .ev-brand img {
+  width: 37px;
+  height: 37px;
+  object-fit: contain;
+}
+#ev-sidebar .ev-brand strong {
+  font-size: 18px;
+  letter-spacing: -0.6px;
+  font-weight: 750;
+}
+#ev-sidebar .ev-brand small {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  color: #a18bac;
+  margin-top: 3px;
+}
+#ev-sidebar nav {
+  padding: 0 15px;
+  flex: 1;
+  overflow-y: auto;
+}
+#ev-sidebar .ev-section-title {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: #afa3b9;
+  margin: 0 14px 12px;
+}
+#ev-sidebar .ev-section-title.secondary {
+  margin-top: 30px;
+}
+#ev-sidebar nav a {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 15px;
+  margin: 4px 0;
+  border-radius: 11px;
+  color: #8a7b98;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  min-height: 44px;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+#ev-sidebar nav a:hover {
+  color: #6d28d9;
+  background: #faf7ff;
+}
+#ev-sidebar nav a.ev-active {
+  background: #f1e9fd;
+  color: #6d28d9;
+  font-weight: 650;
+}
+#ev-sidebar nav a.ev-active:after {
+  content: "";
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background: #8b5cf6;
+  margin-left: auto;
+}
+#ev-sidebar .ev-icon {
+  display: flex;
+  align-items: center;
+}
+#ev-sidebar svg {
+  width: 19px;
+  height: 19px;
+  stroke-width: 1.6;
+}
+#ev-sidebar .ev-sidebar-note {
+  margin: 24px 22px 20px;
+  background: #faf7fe;
+  border: 1px solid #f0e8fa;
+  border-radius: 13px;
+  padding: 15px;
+  color: #8a749f;
+  font-size: 12px;
+  line-height: 1.7;
+}
+#ev-sidebar .ev-sidebar-note strong {
+  display: block;
+  color: #765193;
+  font-size: 13px;
+  margin: 4px 0;
+}
+#ev-sidebar .ev-sidebar-note svg {
+  color: #a27acb;
+  width: 20px;
+  height: 20px;
+}
+#ev-sidebar .ev-user {
+  margin: 0 18px;
+  padding: 17px 4px;
+  border-top: 1px solid #f0eaf5;
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  text-decoration: none;
+  color: #49345c;
+}
+#ev-sidebar .ev-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f0e7fb;
+  color: #8b5cf6;
+  font-size: 13px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+#ev-sidebar .ev-user-info {
+  min-width: 0;
+  flex: 1;
+}
+#ev-sidebar .ev-user-name {
+  font-weight: 650;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#ev-sidebar .ev-user-link {
+  font-size: 12px;
+  color: #ab9bb7;
+  display: block;
+  margin-top: 3px;
+}
+#ev-sidebar .ev-logout {
+  border: 0;
+  background: transparent;
+  color: #b09ebc;
+  padding: 8px;
+  width: auto;
+  cursor: pointer;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+}
+#ev-sidebar .ev-logout:hover {
+  color: #6d28d9;
+  background: #f4edfc;
+}
+#ev-sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 18px;
+  left: 20px;
+  z-index: 1100;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: white;
+  color: #6d28d9;
+  border: 1px solid #e9dff5;
+  border-radius: 11px;
+  box-shadow: 0 3px 14px #4c1d9508;
+  padding: 10px;
+  cursor: pointer;
+}
+#ev-sidebar-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+#ev-sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #24103c55;
+  backdrop-filter: blur(2px);
+  z-index: 999;
+}
+body.ev-has-sidebar {
+  padding-left: 284px !important;
+}
+@media (max-width: 1000px) {
+  #ev-sidebar {
+    width: 232px;
+  }
+}
+@media (max-width: 800px) {
+  #ev-sidebar {
+    width: 248px;
+    transform: translateX(-100%);
+  }
+  #ev-sidebar.ev-open {
+    transform: translateX(0);
+  }
+  #ev-sidebar-toggle {
+    display: flex;
+  }
+  body.ev-has-sidebar {
+    padding-left: 20px !important;
+  }
+  body.ev-sidebar-open #ev-sidebar-overlay {
+    display: block;
+  }
+  body.ev-sidebar-open {
+    overflow: hidden;
+  }
+  #ev-sidebar .ev-brand {
+    margin-top: 76px;
+  }
+  #ev-sidebar .ev-sidebar-note {
+    display: none;
+  }
+}
